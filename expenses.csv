@@ -1,0 +1,421 @@
+date,merchant,category,amount
+2025-07-01,Cabify,transport,36.25
+2025-07-01,Ferreteria Mas,home,29.49
+2025-07-01,Lidl,groceries,56.77
+2025-07-02,Abacus,education,137.97
+2025-07-03,Bonpreu,groceries,55.22
+2025-07-03,Cabify,transport,30.57
+2025-07-03,Can Recasens,dining,33.02
+2025-07-05,Can Recasens,dining,27.81
+2025-07-05,Ikea,home,91.60
+2025-07-05,Spotify,entertainment,11.55
+2025-07-06,Can Recasens,dining,6.18
+2025-07-07,Bicing,transport,50.47
+2025-07-07,Carrefour,groceries,64.77
+2025-07-07,Mercadona,groceries,21.50
+2025-07-08,Bonpreu,groceries,8.66
+2025-07-10,Abacus,education,101.67
+2025-07-10,Bo de B,dining,33.94
+2025-07-10,Federal Cafe,dining,53.82
+2025-07-10,Lidl,groceries,31.77
+2025-07-11,Carrefour,groceries,44.92
+2025-07-12,Farmacia Gala,health,76.83
+2025-07-12,Leroy Merlin,home,88.64
+2025-07-12,Lidl,groceries,58.41
+2025-07-13,Abacus,education,130.17
+2025-07-13,Coursera,education,92.07
+2025-07-14,Bar Alegria,dining,38.80
+2025-07-14,Can Recasens,dining,6.99
+2025-07-14,Optica Universitaria,health,68.71
+2025-07-14,Repsol,transport,45.82
+2025-07-15,Bicing,transport,23.25
+2025-07-15,Carrefour,groceries,79.19
+2025-07-15,Repsol,transport,2.49
+2025-07-16,Endesa,utilities,147.15
+2025-07-16,Leroy Merlin,home,85.86
+2025-07-16,Mercadona,groceries,21.03
+2025-07-16,Nomad Coffee,dining,37.19
+2025-07-17,Bar Alegria,dining,8.40
+2025-07-17,Repsol,transport,23.57
+2025-07-18,Can Recasens,dining,8.24
+2025-07-20,Clinica Dental Sants,health,61.87
+2025-07-20,TMB,transport,50.33
+2025-07-21,Carrefour,groceries,37.89
+2025-07-21,Lidl,groceries,36.50
+2025-07-24,Renfe,transport,20.57
+2025-07-25,Bar Alegria,dining,8.89
+2025-07-25,Can Recasens,dining,46.71
+2025-07-25,Renfe,transport,43.25
+2025-07-25,Repsol,transport,6.93
+2025-07-26,Abacus,education,28.86
+2025-07-26,Carrefour,groceries,72.00
+2025-07-26,Mercadona,groceries,80.56
+2025-07-27,Carrefour,groceries,88.09
+2025-07-27,Mercadona,groceries,17.72
+2025-07-28,Abacus,education,27.41
+2025-07-28,Bar Alegria,dining,46.01
+2025-07-28,Clinica Dental Sants,health,65.84
+2025-07-29,Cabify,transport,49.46
+2025-07-29,Carrefour,groceries,52.24
+2025-07-29,Coursera,education,91.02
+2025-07-29,Leroy Merlin,home,235.79
+2025-07-30,Bicing,transport,50.73
+2025-07-30,Repsol,transport,41.80
+2025-07-30,TMB,transport,43.97
+2025-07-31,Aigues de Barcelona,utilities,29.22
+2025-07-31,Bar Alegria,dining,57.18
+2025-07-31,Ikea,home,114.01
+2025-07-31,Renfe,transport,55.52
+2025-08-01,Can Recasens,dining,53.81
+2025-08-01,Carrefour,groceries,70.39
+2025-08-01,Ferreteria Mas,home,88.41
+2025-08-01,Lidl,groceries,71.55
+2025-08-02,Repsol,transport,16.99
+2025-08-03,Aigues de Barcelona,utilities,59.36
+2025-08-03,Can Recasens,dining,22.06
+2025-08-03,Leroy Merlin,home,107.86
+2025-08-03,Lidl,groceries,45.36
+2025-08-03,Repsol,transport,59.79
+2025-08-04,Farmacia Gala,health,138.17
+2025-08-04,Mercadona,groceries,68.32
+2025-08-05,Bicing,transport,53.07
+2025-08-06,Condis,groceries,11.68
+2025-08-06,Naturgy,utilities,124.47
+2025-08-06,Nomad Coffee,dining,34.94
+2025-08-06,TMB,transport,55.77
+2025-08-07,Bo de B,dining,35.87
+2025-08-09,Mercadona,groceries,87.54
+2025-08-11,Cabify,transport,20.32
+2025-08-12,Carrefour,groceries,33.69
+2025-08-12,Mercadona,groceries,48.15
+2025-08-13,Aigues de Barcelona,utilities,132.43
+2025-08-13,Optica Universitaria,health,175.96
+2025-08-14,Bicing,transport,60.34
+2025-08-14,Bonpreu,groceries,70.25
+2025-08-14,Condis,groceries,67.06
+2025-08-14,Filmoteca,entertainment,16.89
+2025-08-14,Leroy Merlin,home,250.83
+2025-08-14,Renfe,transport,64.13
+2025-08-15,Naturgy,utilities,187.91
+2025-08-16,Lidl,groceries,46.83
+2025-08-17,Nomad Coffee,dining,21.13
+2025-08-17,Repsol,transport,37.99
+2025-08-18,Bonpreu,groceries,9.35
+2025-08-18,Filmoteca,entertainment,27.71
+2025-08-18,Lidl,groceries,38.64
+2025-08-18,Mercadona,groceries,18.30
+2025-08-19,Bar Alegria,dining,52.71
+2025-08-19,Bar Alegria,dining,52.71
+2025-08-19,Mercadona,groceries,26.00
+2025-08-20,Abacus,education,142.77
+2025-08-20,Aigues de Barcelona,utilities,112.12
+2025-08-20,Bicing,transport,66.84
+2025-08-20,Federal Cafe,dining,4.10
+2025-08-20,Filmoteca,entertainment,41.68
+2025-08-22,Bar Alegria,dining,62.41
+2025-08-22,Condis,groceries,93.58
+2025-08-22,Optica Universitaria,health,75.22
+2025-08-23,Bicing,transport,35.81
+2025-08-23,Carrefour,groceries,81.17
+2025-08-23,Endesa,utilities,170.74
+2025-08-23,Nomad Coffee,dining,50.10
+2025-08-23,Spotify,entertainment,21.23
+2025-08-24,Nomad Coffee,dining,25.99
+2025-08-24,Razzmatazz,entertainment,33.95
+2025-08-26,Carrefour,groceries,90.14
+2025-08-26,Razzmatazz,entertainment,38.19
+2025-08-27,Can Recasens,dining,39.50
+2025-08-27,Farmacia Gala,health,113.77
+2025-08-27,Repsol,transport,60.04
+2025-08-28,Cabify,transport,59.00
+2025-08-29,Razzmatazz,entertainment,27.81
+2025-08-29,Renfe,transport,18.46
+2025-08-29,TMB,transport,23.80
+2025-08-29,Teatre Lliure,entertainment,48.96
+2025-08-30,Bo de B,dining,58.87
+2025-08-30,Farmacia Gala,health,38.69
+2025-08-30,Federal Cafe,dining,50.57
+2025-08-30,Ferreteria Mas,home,32.92
+2025-08-30,Spotify,entertainment,26.67
+2025-08-31,Bicing,transport,10.88
+2025-08-31,Condis,groceries,79.77
+2025-09-01,Bonpreu,groceries,15.27
+2025-09-01,Cabify,transport,18.50
+2025-09-01,Repsol,transport,30.53
+2025-09-02,Condis,groceries,80.19
+2025-09-02,Condis,groceries,72.50
+2025-09-02,Repsol,transport,25.77
+2025-09-04,Nomad Coffee,dining,40.48
+2025-09-04,Spotify,entertainment,28.42
+2025-09-05,Bicing,transport,55.08
+2025-09-05,Bo de B,dining,31.35
+2025-09-05,Filmoteca,entertainment,18.03
+2025-09-05,Nomad Coffee,dining,21.91
+2025-09-06,Carrefour,groceries,84.88
+2025-09-06,Ferreteria Mas,home,61.54
+2025-09-06,Leroy Merlin,home,163.89
+2025-09-07,Federal Cafe,dining,50.81
+2025-09-07,Leroy Merlin,home,229.15
+2025-09-08,Clinica Dental Sants,health,55.35
+2025-09-08,Nomad Coffee,dining,65.82
+2025-09-09,Cabify,transport,39.71
+2025-09-10,Bo de B,dining,9.11
+2025-09-10,Can Recasens,dining,37.61
+2025-09-11,TMB,transport,9.89
+2025-09-11,Teatre Lliure,entertainment,16.09
+2025-09-12,Cabify,transport,61.52
+2025-09-13,Bo de B,dining,42.31
+2025-09-14,Bonpreu,groceries,8.36
+2025-09-14,Spotify,entertainment,16.06
+2025-09-15,Abacus,education,239.63
+2025-09-15,Bar Alegria,dining,42.70
+2025-09-15,Llibreria Laie,education,50.48
+2025-09-15,Mercadona,groceries,33.64
+2025-09-15,Repsol,transport,64.02
+2025-09-15,Teatre Lliure,entertainment,35.17
+2025-09-16,Aigues de Barcelona,utilities,104.02
+2025-09-16,Lidl,groceries,22.47
+2025-09-16,Llibreria Laie,education,48.77
+2025-09-16,Mercadona,groceries,15.14
+2025-09-18,Nomad Coffee,dining,22.72
+2025-09-20,Nomad Coffee,dining,65.83
+2025-09-20,Repsol,transport,28.68
+2025-09-21,Can Recasens,dining,66.07
+2025-09-21,Naturgy,utilities,148.22
+2025-09-22,Movistar,utilities,63.84
+2025-09-22,Repsol,transport,15.94
+2025-09-23,Bonpreu,groceries,65.37
+2025-09-23,Clinica Dental Sants,health,148.22
+2025-09-23,Condis,groceries,50.31
+2025-09-23,Lidl,groceries,39.58
+2025-09-23,Movistar,utilities,92.87
+2025-09-24,Can Recasens,dining,15.88
+2025-09-24,Carrefour,groceries,85.93
+2025-09-24,Spotify,entertainment,38.90
+2025-09-25,Farmacia Gala,health,109.56
+2025-09-25,Filmoteca,entertainment,54.58
+2025-09-25,Spotify,entertainment,26.24
+2025-09-26,Spotify,entertainment,42.89
+2025-09-27,Cabify,transport,64.00
+2025-09-27,Endesa,utilities,129.96
+2025-09-27,TMB,transport,16.59
+2025-09-27,Teatre Lliure,entertainment,43.82
+2025-09-29,Aigues de Barcelona,utilities,61.06
+2025-09-29,Can Recasens,dining,47.82
+2025-09-29,Condis,groceries,27.13
+2025-09-29,Mercadona,groceries,22.57
+2025-09-30,Bonpreu,groceries,65.90
+2025-09-30,TMB,transport,25.39
+2025-10-01,Leroy Merlin,home,248.56
+2025-10-01,Mercadona,groceries,59.87
+2025-10-02,Lidl,groceries,35.79
+2025-10-02,Netflix,entertainment,45.57
+2025-10-02,Spotify,entertainment,47.94
+2025-10-03,Repsol,transport,66.40
+2025-10-04,Nomad Coffee,dining,70.14
+2025-10-05,Bonpreu,groceries,67.03
+2025-10-05,Cabify,transport,64.59
+2025-10-06,Bicing,transport,6.63
+2025-10-06,Bonpreu,groceries,16.07
+2025-10-06,Cabify,transport,58.87
+2025-10-06,Clinica Dental Sants,health,170.35
+2025-10-06,Clinica Dental Sants,health,159.91
+2025-10-06,Mercadona,groceries,55.32
+2025-10-06,Netflix,entertainment,13.79
+2025-10-07,Bonpreu,groceries,49.34
+2025-10-07,Lidl,groceries,61.85
+2025-10-07,Naturgy,utilities,110.42
+2025-10-08,Coursera,education,37.12
+2025-10-08,Renfe,transport,31.45
+2025-10-09,Bar Alegria,dining,68.25
+2025-10-09,Bonpreu,groceries,52.49
+2025-10-09,Federal Cafe,dining,55.78
+2025-10-09,Ferreteria Mas,home,16.38
+2025-10-09,Teatre Lliure,entertainment,24.55
+2025-10-10,Abacus,education,74.38
+2025-10-10,Carrefour,groceries,36.11
+2025-10-10,Movistar,utilities,94.84
+2025-10-10,Repsol,transport,66.22
+2025-10-11,Bar Alegria,dining,14.47
+2025-10-11,Teatre Lliure,entertainment,37.63
+2025-10-12,Condis,groceries,28.63
+2025-10-12,Federal Cafe,dining,25.23
+2025-10-13,Federal Cafe,dining,51.31
+2025-10-14,Cabify,transport,37.21
+2025-10-14,Federal Cafe,dining,72.89
+2025-10-14,Federal Cafe,dining,61.99
+2025-10-15,Carrefour,groceries,81.65
+2025-10-16,Abacus,education,130.84
+2025-10-16,Carrefour,groceries,40.52
+2025-10-17,Abacus,education,218.18
+2025-10-18,Condis,groceries,61.25
+2025-10-18,Leroy Merlin,home,231.43
+2025-10-19,Bonpreu,groceries,22.52
+2025-10-19,Federal Cafe,dining,7.67
+2025-10-19,Filmoteca,entertainment,51.01
+2025-10-20,Bonpreu,groceries,51.92
+2025-10-20,Bonpreu,groceries,69.21
+2025-10-20,Condis,groceries,15.51
+2025-10-21,Bonpreu,groceries,55.17
+2025-10-21,Leroy Merlin,home,252.28
+2025-10-22,Nomad Coffee,dining,12.38
+2025-10-22,Nomad Coffee,dining,14.59
+2025-10-25,Bar Alegria,dining,16.03
+2025-10-25,Lidl,groceries,87.44
+2025-10-26,Bar Alegria,dining,25.29
+2025-10-26,Bonpreu,groceries,60.88
+2025-10-26,Movistar,utilities,74.76
+2025-10-27,Endesa,utilities,28.39
+2025-10-27,Movistar,utilities,141.82
+2025-10-28,Condis,groceries,44.80
+2025-10-28,Farmacia Gala,health,13.90
+2025-10-29,Ikea,home,238.63
+2025-10-29,Netflix,entertainment,43.94
+2025-10-30,Federal Cafe,dining,44.82
+2025-10-31,Federal Cafe,dining,49.42
+2025-10-31,Filmoteca,entertainment,26.27
+2025-10-31,Spotify,entertainment,34.32
+2025-11-01,Abacus,education,31.46
+2025-11-01,Filmoteca,entertainment,28.61
+2025-11-01,Mercadona,groceries,75.98
+2025-11-01,TMB,transport,51.77
+2025-11-02,Condis,groceries,12.17
+2025-11-02,Lidl,groceries,12.01
+2025-11-03,Condis,groceries,48.85
+2025-11-04,Carrefour,groceries,71.38
+2025-11-04,Leroy Merlin,home,27.38
+2025-11-04,Mercadona,groceries,14.12
+2025-11-05,Bo de B,dining,47.85
+2025-11-05,Bonpreu,groceries,56.91
+2025-11-06,Coursera,education,133.87
+2025-11-06,Razzmatazz,entertainment,17.81
+2025-11-07,Abacus,education,63.99
+2025-11-07,Can Recasens,dining,28.96
+2025-11-07,Condis,groceries,54.27
+2025-11-07,Federal Cafe,dining,50.56
+2025-11-07,Renfe,transport,52.24
+2025-11-07,Renfe,transport,52.24
+2025-11-07,Repsol,transport,54.39
+2025-11-07,Spotify,entertainment,52.51
+2025-11-08,Condis,groceries,83.42
+2025-11-10,Ferreteria Mas,home,49.29
+2025-11-10,Movistar,utilities,69.10
+2025-11-10,Movistar,utilities,69.10
+2025-11-10,Nomad Coffee,dining,70.14
+2025-11-11,Repsol,transport,11.86
+2025-11-12,Renfe,transport,27.20
+2025-11-12,Spotify,entertainment,37.83
+2025-11-12,TMB,transport,44.66
+2025-11-13,Bar Alegria,dining,73.20
+2025-11-13,Can Recasens,dining,36.26
+2025-11-13,Condis,groceries,73.30
+2025-11-13,Netflix,entertainment,40.49
+2025-11-14,Bo de B,dining,44.61
+2025-11-14,Bonpreu,groceries,37.14
+2025-11-15,Movistar,utilities,193.09
+2025-11-17,Federal Cafe,dining,39.33
+2025-11-17,Federal Cafe,dining,39.78
+2025-11-17,Ferreteria Mas,home,296.49
+2025-11-17,Naturgy,utilities,85.81
+2025-11-18,Condis,groceries,74.22
+2025-11-18,Endesa,utilities,168.60
+2025-11-18,Federal Cafe,dining,72.35
+2025-11-19,Lidl,groceries,9.88
+2025-11-20,Lidl,groceries,22.60
+2025-11-20,Netflix,entertainment,20.31
+2025-11-20,Nomad Coffee,dining,43.83
+2025-11-21,Can Recasens,dining,62.15
+2025-11-21,Lidl,groceries,90.26
+2025-11-21,Netflix,entertainment,33.77
+2025-11-22,Bar Alegria,dining,42.53
+2025-11-23,Bicing,transport,22.35
+2025-11-23,Bicing,transport,8.68
+2025-11-23,Ikea,home,275.95
+2025-11-23,Lidl,groceries,40.09
+2025-11-23,Repsol,transport,20.63
+2025-11-24,Bicing,transport,63.31
+2025-11-24,Bonpreu,groceries,30.01
+2025-11-24,Can Recasens,dining,52.80
+2025-11-25,Aigues de Barcelona,utilities,108.29
+2025-11-26,Naturgy,utilities,79.37
+2025-11-26,Nomad Coffee,dining,54.85
+2025-11-27,Cabify,transport,5.17
+2025-11-27,Can Recasens,dining,13.85
+2025-11-27,Farmacia Gala,health,97.92
+2025-11-27,Lidl,groceries,74.47
+2025-11-27,Mercadona,groceries,92.74
+2025-11-27,Nomad Coffee,dining,59.19
+2025-11-28,Carrefour,groceries,15.33
+2025-11-28,Optica Universitaria,health,64.60
+2025-11-28,Spotify,entertainment,36.78
+2025-11-29,Condis,groceries,93.02
+2025-11-29,Condis,groceries,90.69
+2025-11-29,Condis,groceries,74.82
+2025-11-29,Condis,groceries,93.02
+2025-11-29,Lidl,groceries,73.00
+2025-11-29,Mercadona,groceries,90.60
+2025-11-29,Mercadona,groceries,90.60
+2025-11-29,Netflix,entertainment,17.94
+2025-11-30,Can Recasens,dining,21.63
+2025-11-30,Movistar,utilities,155.42
+2025-11-30,Repsol,transport,30.34
+2025-11-30,TMB,transport,67.32
+2025-12-01,Condis,groceries,44.91
+2025-12-02,Bicing,transport,50.97
+2025-12-02,Razzmatazz,entertainment,13.16
+2025-12-03,Clinica Dental Sants,health,34.24
+2025-12-04,Farmacia Gala,health,25.63
+2025-12-04,Mercadona,groceries,78.14
+2025-12-05,Farmacia Gala,health,82.10
+2025-12-05,Federal Cafe,dining,6.61
+2025-12-06,Bonpreu,groceries,80.21
+2025-12-06,Carrefour,groceries,23.19
+2025-12-07,Condis,groceries,42.14
+2025-12-07,Naturgy,utilities,209.18
+2025-12-07,TMB,transport,29.42
+2025-12-07,Teatre Lliure,entertainment,32.02
+2025-12-08,Bicing,transport,46.86
+2025-12-08,Bonpreu,groceries,52.59
+2025-12-08,Endesa,utilities,144.75
+2025-12-09,Bonpreu,groceries,38.52
+2025-12-10,Cabify,transport,38.90
+2025-12-10,Carrefour,groceries,93.25
+2025-12-11,Bar Alegria,dining,71.88
+2025-12-11,Can Recasens,dining,51.26
+2025-12-11,Federal Cafe,dining,47.77
+2025-12-11,Ferreteria Mas,home,160.08
+2025-12-11,Mercadona,groceries,87.02
+2025-12-12,Filmoteca,entertainment,37.75
+2025-12-13,Carrefour,groceries,38.83
+2025-12-13,TMB,transport,4.28
+2025-12-14,Carrefour,groceries,73.77
+2025-12-14,Condis,groceries,46.47
+2025-12-14,Mercadona,groceries,36.71
+2025-12-14,Repsol,transport,17.09
+2025-12-15,Repsol,transport,9.09
+2025-12-17,Bonpreu,groceries,60.49
+2025-12-17,Lidl,groceries,73.43
+2025-12-17,Nomad Coffee,dining,31.43
+2025-12-18,Renfe,transport,61.55
+2025-12-19,Federal Cafe,dining,27.91
+2025-12-19,Movistar,utilities,50.01
+2025-12-21,Renfe,transport,65.74
+2025-12-22,Bar Alegria,dining,37.17
+2025-12-22,Clinica Dental Sants,health,115.24
+2025-12-22,Razzmatazz,entertainment,37.84
+2025-12-22,Repsol,transport,24.93
+2025-12-23,Lidl,groceries,61.85
+2025-12-23,Lidl,groceries,61.85
+2025-12-24,Bo de B,dining,7.18
+2025-12-24,Bo de B,dining,10.07
+2025-12-24,Ferreteria Mas,home,65.80
+2025-12-24,Renfe,transport,62.62
+2025-12-25,Bonpreu,groceries,16.79
+2025-12-25,Condis,groceries,93.43
+2025-12-25,Naturgy,utilities,47.73
+2025-12-25,Naturgy,utilities,80.10
+2025-12-27,Optica Universitaria,health,36.05
+2025-12-28,Bonpreu,groceries,75.67
+2025-12-29,Teatre Lliure,entertainment,48.90
+2025-12-30,Can Recasens,dining,17.10
+2025-12-30,Can Recasens,dining,54.78
