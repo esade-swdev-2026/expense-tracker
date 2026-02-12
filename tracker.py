@@ -2,9 +2,13 @@ import sys
 import csv
 
 
-def calculate_totals(x):
+def calculate_totals(x, y, z):
     d = {}
     for e in x:
+        if y != "" and e[2] != y:
+            continue
+        if e[3] < z:
+            continue
         if e[2] not in d:
             d[e[2]] = 0
         d[e[2]] = d[e[2]] + e[3]
@@ -15,7 +19,7 @@ def calculate_totals(x):
     return r
 
 
-def run(path):
+def run(path, cat, minimum):
     rows = []
     try:
         f = open(path)
@@ -31,9 +35,13 @@ def run(path):
         sys.exit(1)
 
     print("Expense report for " + path)
+    if cat != "":
+        print("category: " + cat)
+    if minimum > 0.0:
+        print("only amounts of " + ("%.2f" % minimum) + " or more")
     print("-" * 40)
 
-    totals = calculate_totals(rows)
+    totals = calculate_totals(rows, cat, minimum)
     grand = 0
     for t in totals:
         print(t[0].ljust(20) + ("%.2f" % t[1]).rjust(10))
@@ -46,4 +54,10 @@ if __name__ == "__main__":
     path = "expenses.csv"
     if len(sys.argv) > 1:
         path = sys.argv[1]
-    run(path)
+    cat = ""
+    if len(sys.argv) > 2:
+        cat = sys.argv[2]
+    minimum = 0.0
+    if len(sys.argv) > 3:
+        minimum = float(sys.argv[3])
+    run(path, cat, minimum)
