@@ -49,6 +49,17 @@ def run(path, cat, minimum):
     print("-" * 40)
     print("TOTAL".ljust(20) + ("%.2f" % grand).rjust(10))
 
+    m = 0.0
+    mr = None
+    for e in rows:
+        if e[3] > m:
+            m = e[3]
+            mr = e
+    if mr is not None:
+        print("")
+        print("Largest single expense:")
+        print(mr[1] + " (" + mr[2] + ") on " + mr[0] + " for " + ("%.2f" % mr[3]))
+
 
 if __name__ == "__main__":
     path = "expenses.csv"
