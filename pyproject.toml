@@ -1,0 +1,17 @@
+[project]
+name = "expense-tracker"
+version = "0.1.0"
+description = "A terminal expense tracker, the demo project for Software Development for Business"
+readme = "README.md"
+authors = [
+    { name = "Alberto Camara", email = "camara@protonmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+expense-tracker = "expense_tracker:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
