@@ -59,16 +59,3 @@ def run(path, cat, minimum):
         print("")
         print("Largest single expense:")
         print(mr[1] + " (" + mr[2] + ") on " + mr[0] + " for " + ("%.2f" % mr[3]))
-
-
-if __name__ == "__main__":
-    path = "expenses.csv"
-    if len(sys.argv) > 1:
-        path = sys.argv[1]
-    cat = ""
-    if len(sys.argv) > 2:
-        cat = sys.argv[2]
-    minimum = 0.0
-    if len(sys.argv) > 3:
-        minimum = float(sys.argv[3])
-    run(path, cat, minimum)

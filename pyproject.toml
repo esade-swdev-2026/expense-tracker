@@ -7,10 +7,12 @@ authors = [
     { name = "Alberto Camara", email = "camara@protonmail.com" }
 ]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "typer>=0.12",
+]
 
 [project.scripts]
-expense-tracker = "expense_tracker:main"
+expenses = "expense_tracker.cli:app"
 
 [build-system]
 requires = ["hatchling"]
