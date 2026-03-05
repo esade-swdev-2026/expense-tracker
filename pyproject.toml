@@ -6,6 +6,8 @@ readme = "README.md"
 authors = [
     { name = "Alberto Camara", email = "camara@protonmail.com" }
 ]
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.13"
 dependencies = [
     "typer>=0.12",
