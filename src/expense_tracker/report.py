@@ -12,59 +12,67 @@ AMOUNT_WIDTH = 10
 RULE_WIDTH = 40
 
 
-def calculate_totals(x, y, z):
-    d = {}
-    for e in x:
-        if y != "" and e[CATEGORY] != y:
+def total_by_category(expenses, category, minimum):
+    totals = {}
+    for expense in expenses:
+        if category != "" and expense[CATEGORY] != category:
             continue
-        if e[AMOUNT] < z:
+        if expense[AMOUNT] < minimum:
             continue
-        if e[CATEGORY] not in d:
-            d[e[CATEGORY]] = 0
-        d[e[CATEGORY]] = d[e[CATEGORY]] + e[AMOUNT]
-    r = []
-    for k in d:
-        r.append((k, d[k]))
-    r.sort(key=lambda t: -t[1])
-    return r
+        if expense[CATEGORY] not in totals:
+            totals[expense[CATEGORY]] = 0
+        totals[expense[CATEGORY]] = totals[expense[CATEGORY]] + expense[AMOUNT]
+    ordered = []
+    for name in totals:
+        ordered.append((name, totals[name]))
+    ordered.sort(key=lambda pair: -pair[1])
+    return ordered
 
 
-def run(path, cat, minimum):
-    rows = []
+def run(path, category, minimum):
+    expenses = []
     try:
         f = open(path)
         reader = csv.reader(f)
         next(reader)
         for row in reader:
             if len(row) == FIELDS_PER_ROW:
-                rows.append((row[DATE], row[MERCHANT], row[CATEGORY], float(row[AMOUNT])))
+                expenses.append((row[DATE], row[MERCHANT], row[CATEGORY], float(row[AMOUNT])))
         f.close()
     except:
         print("could not read " + path)
         sys.exit(1)
 
     print("Expense report for " + path)
-    if cat != "":
-        print("category: " + cat)
+    if category != "":
+        print("category: " + category)
     if minimum > 0.0:
         print("only amounts of " + ("%.2f" % minimum) + " or more")
     print("-" * RULE_WIDTH)
 
-    totals = calculate_totals(rows, cat, minimum)
-    grand = 0
-    for t in totals:
-        print(t[0].ljust(NAME_WIDTH) + ("%.2f" % t[1]).rjust(AMOUNT_WIDTH))
-        grand = grand + t[1]
+    totals = total_by_category(expenses, category, minimum)
+    grand_total = 0
+    for name, amount in totals:
+        print(name.ljust(NAME_WIDTH) + ("%.2f" % amount).rjust(AMOUNT_WIDTH))
+        grand_total = grand_total + amount
     print("-" * RULE_WIDTH)
-    print("TOTAL".ljust(NAME_WIDTH) + ("%.2f" % grand).rjust(AMOUNT_WIDTH))
+    print("TOTAL".ljust(NAME_WIDTH) + ("%.2f" % grand_total).rjust(AMOUNT_WIDTH))
 
-    m = 0.0
-    mr = None
-    for e in rows:
-        if e[AMOUNT] > m:
-            m = e[AMOUNT]
-            mr = e
-    if mr is not None:
+    largest_amount = 0.0
+    largest = None
+    for expense in expenses:
+        if expense[AMOUNT] > largest_amount:
+            largest_amount = expense[AMOUNT]
+            largest = expense
+    if largest is not None:
         print("")
         print("Largest single expense:")
-        print(mr[MERCHANT] + " (" + mr[CATEGORY] + ") on " + mr[DATE] + " for " + ("%.2f" % mr[AMOUNT]))
+        print(
+            largest[MERCHANT]
+            + " ("
+            + largest[CATEGORY]
+            + ") on "
+            + largest[DATE]
+            + " for "
+            + ("%.2f" % largest[AMOUNT])
+        )
