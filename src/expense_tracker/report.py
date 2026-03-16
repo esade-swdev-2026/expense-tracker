@@ -12,6 +12,17 @@ AMOUNT_WIDTH = 10
 RULE_WIDTH = 40
 
 
+def read_expenses(path):
+    expenses = []
+    with open(path) as handle:
+        reader = csv.reader(handle)
+        next(reader)
+        for row in reader:
+            if len(row) == FIELDS_PER_ROW:
+                expenses.append((row[DATE], row[MERCHANT], row[CATEGORY], float(row[AMOUNT])))
+    return expenses
+
+
 def total_by_category(expenses, category, minimum):
     totals = {}
     for expense in expenses:
@@ -29,45 +40,33 @@ def total_by_category(expenses, category, minimum):
     return ordered
 
 
-def run(path, category, minimum):
-    expenses = []
-    try:
-        f = open(path)
-        reader = csv.reader(f)
-        next(reader)
-        for row in reader:
-            if len(row) == FIELDS_PER_ROW:
-                expenses.append((row[DATE], row[MERCHANT], row[CATEGORY], float(row[AMOUNT])))
-        f.close()
-    except:
-        print("could not read " + path)
-        sys.exit(1)
-
-    print("Expense report for " + path)
-    if category != "":
-        print("category: " + category)
-    if minimum > 0.0:
-        print("only amounts of " + ("%.2f" % minimum) + " or more")
-    print("-" * RULE_WIDTH)
-
-    totals = total_by_category(expenses, category, minimum)
-    grand_total = 0
-    for name, amount in totals:
-        print(name.ljust(NAME_WIDTH) + ("%.2f" % amount).rjust(AMOUNT_WIDTH))
-        grand_total = grand_total + amount
-    print("-" * RULE_WIDTH)
-    print("TOTAL".ljust(NAME_WIDTH) + ("%.2f" % grand_total).rjust(AMOUNT_WIDTH))
-
-    largest_amount = 0.0
+def largest_expense(expenses):
     largest = None
     for expense in expenses:
-        if expense[AMOUNT] > largest_amount:
-            largest_amount = expense[AMOUNT]
+        if largest is None or expense[AMOUNT] > largest[AMOUNT]:
             largest = expense
+    return largest
+
+
+def format_report(path, category, minimum, totals, largest):
+    lines = ["Expense report for " + path]
+    if category != "":
+        lines.append("category: " + category)
+    if minimum > 0.0:
+        lines.append("only amounts of " + ("%.2f" % minimum) + " or more")
+    lines.append("-" * RULE_WIDTH)
+
+    grand_total = 0
+    for name, amount in totals:
+        lines.append(name.ljust(NAME_WIDTH) + ("%.2f" % amount).rjust(AMOUNT_WIDTH))
+        grand_total = grand_total + amount
+    lines.append("-" * RULE_WIDTH)
+    lines.append("TOTAL".ljust(NAME_WIDTH) + ("%.2f" % grand_total).rjust(AMOUNT_WIDTH))
+
     if largest is not None:
-        print("")
-        print("Largest single expense:")
-        print(
+        lines.append("")
+        lines.append("Largest single expense:")
+        lines.append(
             largest[MERCHANT]
             + " ("
             + largest[CATEGORY]
@@ -76,3 +75,17 @@ def run(path, category, minimum):
             + " for "
             + ("%.2f" % largest[AMOUNT])
         )
+    return lines
+
+
+def run(path, category, minimum):
+    try:
+        expenses = read_expenses(path)
+    except:
+        print("could not read " + path)
+        sys.exit(1)
+
+    totals = total_by_category(expenses, category, minimum)
+    largest = largest_expense(expenses)
+    for line in format_report(path, category, minimum, totals, largest):
+        print(line)
