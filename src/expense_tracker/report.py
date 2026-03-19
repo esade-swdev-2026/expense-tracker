@@ -1,5 +1,6 @@
 import sys
 import csv
+from dataclasses import dataclass
 
 DATE = 0
 MERCHANT = 1
@@ -12,6 +13,14 @@ AMOUNT_WIDTH = 10
 RULE_WIDTH = 40
 
 
+@dataclass(frozen=True)
+class Expense:
+    date: str
+    merchant: str
+    category: str
+    amount: float
+
+
 def read_expenses(path):
     expenses = []
     with open(path) as handle:
@@ -19,20 +28,27 @@ def read_expenses(path):
         next(reader)
         for row in reader:
             if len(row) == FIELDS_PER_ROW:
-                expenses.append((row[DATE], row[MERCHANT], row[CATEGORY], float(row[AMOUNT])))
+                expenses.append(
+                    Expense(
+                        date=row[DATE],
+                        merchant=row[MERCHANT],
+                        category=row[CATEGORY],
+                        amount=float(row[AMOUNT]),
+                    )
+                )
     return expenses
 
 
 def total_by_category(expenses, category, minimum):
     totals = {}
     for expense in expenses:
-        if category != "" and expense[CATEGORY] != category:
+        if category != "" and expense.category != category:
             continue
-        if expense[AMOUNT] < minimum:
+        if expense.amount < minimum:
             continue
-        if expense[CATEGORY] not in totals:
-            totals[expense[CATEGORY]] = 0
-        totals[expense[CATEGORY]] = totals[expense[CATEGORY]] + expense[AMOUNT]
+        if expense.category not in totals:
+            totals[expense.category] = 0
+        totals[expense.category] = totals[expense.category] + expense.amount
     ordered = []
     for name in totals:
         ordered.append((name, totals[name]))
@@ -43,7 +59,7 @@ def total_by_category(expenses, category, minimum):
 def largest_expense(expenses):
     largest = None
     for expense in expenses:
-        if largest is None or expense[AMOUNT] > largest[AMOUNT]:
+        if largest is None or expense.amount > largest.amount:
             largest = expense
     return largest
 
@@ -67,13 +83,13 @@ def format_report(path, category, minimum, totals, largest):
         lines.append("")
         lines.append("Largest single expense:")
         lines.append(
-            largest[MERCHANT]
+            largest.merchant
             + " ("
-            + largest[CATEGORY]
+            + largest.category
             + ") on "
-            + largest[DATE]
+            + largest.date
             + " for "
-            + ("%.2f" % largest[AMOUNT])
+            + ("%.2f" % largest.amount)
         )
     return lines
 
