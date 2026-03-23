@@ -1,10 +1,12 @@
 import csv
 import datetime
-import os
+from pathlib import Path
 
 import typer
 
 from expense_tracker.report import run
+
+DATA_FILE = Path("data") / "expenses.csv"
 
 app = typer.Typer(help="A terminal expense tracker.")
 
@@ -32,13 +34,11 @@ def add(
 ) -> None:
     if date == "":
         date = datetime.date.today().isoformat()
-    if not os.path.exists("data"):
-        os.makedirs("data")
-    exists = os.path.exists("data/expenses.csv")
-    f = open("data/expenses.csv", "a", newline="")
-    writer = csv.writer(f)
-    if not exists:
-        writer.writerow(["date", "merchant", "category", "amount"])
-    writer.writerow([date, merchant, category, "%.2f" % amount])
-    f.close()
-    print("added " + merchant + " (" + category + ") " + ("%.2f" % amount) + " to data/expenses.csv")
+    DATA_FILE.parent.mkdir(exist_ok=True)
+    is_new = not DATA_FILE.exists()
+    with DATA_FILE.open("a", newline="") as handle:
+        writer = csv.writer(handle)
+        if is_new:
+            writer.writerow(["date", "merchant", "category", "amount"])
+        writer.writerow([date, merchant, category, f"{amount:.2f}"])
+    print(f"added {merchant} ({category}) {amount:.2f} to {DATA_FILE}")
