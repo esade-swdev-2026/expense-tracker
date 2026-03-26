@@ -4,7 +4,12 @@ from pathlib import Path
 
 import typer
 
-from expense_tracker.report import run
+from expense_tracker.report import (
+    format_report,
+    largest_expense,
+    read_expenses,
+    total_by_category,
+)
 
 DATA_FILE = Path("data") / "expenses.csv"
 
@@ -22,7 +27,16 @@ def report(
     category: str = typer.Option("", help="Only this category."),
     minimum: float = typer.Option(0.0, "--minimum", "--min", help="Ignore amounts below this."),
 ) -> None:
-    run(path, category, minimum)
+    try:
+        expenses = read_expenses(path)
+    except (OSError, ValueError):
+        typer.echo(f"could not read {path}", err=True)
+        raise typer.Exit(1) from None
+
+    totals = total_by_category(expenses, category, minimum)
+    largest = largest_expense(expenses)
+    for line in format_report(path, category, minimum, totals, largest):
+        typer.echo(line)
 
 
 @app.command()

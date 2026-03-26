@@ -1,5 +1,4 @@
 import csv
-import sys
 from dataclasses import dataclass
 
 DATE = 0
@@ -90,16 +89,3 @@ def format_report(
             f"{largest.merchant} ({largest.category}) on {largest.date} for {largest.amount:.2f}"
         )
     return lines
-
-
-def run(path: str, category: str, minimum: float) -> None:
-    try:
-        expenses = read_expenses(path)
-    except (OSError, ValueError):
-        print(f"could not read {path}")
-        sys.exit(1)
-
-    totals = total_by_category(expenses, category, minimum)
-    largest = largest_expense(expenses)
-    for line in format_report(path, category, minimum, totals, largest):
-        print(line)
