@@ -89,3 +89,7 @@ def format_report(
             f"{largest.merchant} ({largest.category}) on {largest.date} for {largest.amount:.2f}"
         )
     return lines
+
+
+def remove_duplicates(expenses: list[Expense]) -> list[Expense]:
+    return expenses
