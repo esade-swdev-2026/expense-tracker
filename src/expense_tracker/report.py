@@ -92,4 +92,10 @@ def format_report(
 
 
 def remove_duplicates(expenses: list[Expense]) -> list[Expense]:
-    return expenses
+    seen: set[Expense] = set()
+    unique: list[Expense] = []
+    for expense in expenses:
+        if expense not in seen:
+            seen.add(expense)
+            unique.append(expense)
+    return unique
