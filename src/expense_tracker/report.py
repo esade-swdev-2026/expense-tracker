@@ -1,4 +1,5 @@
 import csv
+import re
 from dataclasses import dataclass
 
 DATE = 0
@@ -10,6 +11,8 @@ FIELDS_PER_ROW = 4
 NAME_WIDTH = 20
 AMOUNT_WIDTH = 10
 RULE_WIDTH = 40
+
+MONTH_PATTERN = re.compile(r"\d{4}-(0[1-9]|1[0-2])")
 
 
 @dataclass(frozen=True)
@@ -93,3 +96,11 @@ def format_report(
 
 def remove_duplicates(expenses: list[Expense]) -> list[Expense]:
     return list(dict.fromkeys(expenses))
+
+
+def is_valid_month(month: str) -> bool:
+    return MONTH_PATTERN.fullmatch(month) is not None
+
+
+def filter_by_month(expenses: list[Expense], month: str) -> list[Expense]:
+    return [expense for expense in expenses if expense.date.startswith(month + "-")]
