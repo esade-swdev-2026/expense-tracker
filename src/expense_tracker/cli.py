@@ -5,7 +5,9 @@ from pathlib import Path
 import typer
 
 from expense_tracker.report import (
+    filter_by_month,
     format_report,
+    is_valid_month,
     largest_expense,
     read_expenses,
     total_by_category,
@@ -26,16 +28,22 @@ def report(
     path: str = typer.Argument("expenses.csv", help="CSV file to read."),
     category: str = typer.Option("", help="Only this category."),
     minimum: float = typer.Option(0.0, "--minimum", "--min", help="Ignore amounts below this."),
+    month: str = typer.Option("", help="Only this month, as YYYY-MM."),
 ) -> None:
+    if month != "" and not is_valid_month(month):
+        typer.echo(f"month must look like 2025-07, not {month}", err=True)
+        raise typer.Exit(2)
     try:
         expenses = read_expenses(path)
     except (OSError, ValueError):
         typer.echo(f"could not read {path}", err=True)
         raise typer.Exit(1) from None
 
+    if month != "":
+        expenses = filter_by_month(expenses, month)
     totals = total_by_category(expenses, category, minimum)
     largest = largest_expense(expenses)
-    for line in format_report(path, category, minimum, totals, largest):
+    for line in format_report(path, category, minimum, totals, largest, month):
         typer.echo(line)
 
 

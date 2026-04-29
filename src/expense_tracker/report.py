@@ -70,10 +70,13 @@ def format_report(
     minimum: float,
     totals: list[tuple[str, float]],
     largest: Expense | None,
+    month: str = "",
 ) -> list[str]:
     lines = [f"Expense report for {path}"]
     if category != "":
         lines.append(f"category: {category}")
+    if month != "":
+        lines.append(f"month: {month}")
     if minimum > 0.0:
         lines.append(f"only amounts of {minimum:.2f} or more")
     lines.append("-" * RULE_WIDTH)
