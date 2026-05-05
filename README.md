@@ -40,6 +40,17 @@ uv run expenses add Renfe transport 21.00 --date 2026-03-01
 - `add` writes to `data/expenses.csv`, which is not in version control. Report on it by
   passing the path: `uv run expenses report data/expenses.csv`.
 
+## Before you push
+
+Run the same checks CI runs, in the same order:
+
+```bash
+scripts/check.sh
+```
+
+It runs ruff, the formatting check, mypy and pytest, and stops at the first one that fails.
+A push should never be the first time your code meets these checks.
+
 ## Licence
 
 MIT. See [LICENSE](LICENSE).
