@@ -64,6 +64,21 @@ def largest_expense(expenses: list[Expense]) -> Expense | None:
     return largest
 
 
+def largest_expenses(expenses: list[Expense], count: int) -> list[Expense]:
+    return sorted(expenses, key=lambda expense: -expense.amount)[:count]
+
+
+def format_top(expenses: list[Expense]) -> list[str]:
+    lines = [f"Largest {len(expenses)} expenses:"]
+    for expense in expenses:
+        lines.append(
+            f"{expense.date}  "
+            + expense.merchant.ljust(NAME_WIDTH)
+            + f"{expense.amount:.2f}".rjust(AMOUNT_WIDTH)
+        )
+    return lines
+
+
 def format_report(
     path: str,
     category: str,
