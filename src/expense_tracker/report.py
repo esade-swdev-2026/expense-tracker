@@ -97,6 +97,13 @@ def format_report(
     return lines
 
 
+def format_csv(totals: list[tuple[str, float]]) -> list[str]:
+    lines = ["category,total"]
+    for name, amount in totals:
+        lines.append(f"{name},{amount:.2f}")
+    return lines
+
+
 def remove_duplicates(expenses: list[Expense]) -> list[Expense]:
     return list(dict.fromkeys(expenses))
 
