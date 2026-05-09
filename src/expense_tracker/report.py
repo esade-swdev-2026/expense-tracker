@@ -35,7 +35,7 @@ def read_expenses(path: str) -> list[Expense]:
                         date=row[DATE],
                         merchant=row[MERCHANT],
                         category=row[CATEGORY],
-                        amount=float(row[AMOUNT]),
+                        amount=round(float(row[AMOUNT])),
                     )
                 )
     return expenses
