@@ -6,6 +6,7 @@ import typer
 
 from expense_tracker.report import (
     filter_by_month,
+    format_csv,
     format_report,
     is_valid_month,
     largest_expense,
@@ -14,6 +15,7 @@ from expense_tracker.report import (
 )
 
 DATA_FILE = Path("data") / "expenses.csv"
+OUTPUT_FORMATS = ("table", "csv")
 
 app = typer.Typer(help="A terminal expense tracker.")
 
@@ -29,9 +31,13 @@ def report(
     category: str = typer.Option("", help="Only this category."),
     minimum: float = typer.Option(0.0, "--minimum", "--min", help="Ignore amounts below this."),
     month: str = typer.Option("", help="Only this month, as YYYY-MM."),
+    output_format: str = typer.Option("table", "--format", help="table or csv."),
 ) -> None:
     if month != "" and not is_valid_month(month):
         typer.echo(f"month must look like 2025-07, not {month}", err=True)
+        raise typer.Exit(2)
+    if output_format not in OUTPUT_FORMATS:
+        typer.echo(f"format must be table or csv, not {output_format}", err=True)
         raise typer.Exit(2)
     try:
         expenses = read_expenses(path)
@@ -42,8 +48,11 @@ def report(
     if month != "":
         expenses = filter_by_month(expenses, month)
     totals = total_by_category(expenses, category, minimum)
-    largest = largest_expense(expenses)
-    for line in format_report(path, category, minimum, totals, largest, month):
+    if output_format == "csv":
+        lines = format_csv(totals)
+    else:
+        lines = format_report(path, category, minimum, totals, largest_expense(expenses), month)
+    for line in lines:
         typer.echo(line)
 
 
