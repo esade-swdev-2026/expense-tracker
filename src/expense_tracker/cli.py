@@ -7,8 +7,10 @@ import typer
 from expense_tracker.report import (
     filter_by_month,
     format_report,
+    format_top,
     is_valid_month,
     largest_expense,
+    largest_expenses,
     read_expenses,
     total_by_category,
 )
@@ -29,6 +31,7 @@ def report(
     category: str = typer.Option("", help="Only this category."),
     minimum: float = typer.Option(0.0, "--minimum", "--min", help="Ignore amounts below this."),
     month: str = typer.Option("", help="Only this month, as YYYY-MM."),
+    top: int = typer.Option(0, min=0, help="Also list the N largest expenses."),
 ) -> None:
     if month != "" and not is_valid_month(month):
         typer.echo(f"month must look like 2025-07, not {month}", err=True)
@@ -43,7 +46,10 @@ def report(
         expenses = filter_by_month(expenses, month)
     totals = total_by_category(expenses, category, minimum)
     largest = largest_expense(expenses)
-    for line in format_report(path, category, minimum, totals, largest, month):
+    lines = format_report(path, category, minimum, totals, largest, month)
+    if top > 0:
+        lines = lines + [""] + format_top(largest_expenses(expenses, top))
+    for line in lines:
         typer.echo(line)
 
 
