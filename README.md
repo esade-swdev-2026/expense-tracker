@@ -23,6 +23,7 @@ uv run expenses report
 uv run expenses report --category dining --min 20
 uv run expenses report --month 2025-09
 uv run expenses report --top 5
+uv run expenses report --format csv
 ```
 
 Add an expense:

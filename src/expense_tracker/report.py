@@ -35,7 +35,7 @@ def read_expenses(path: str) -> list[Expense]:
                         date=row[DATE],
                         merchant=row[MERCHANT],
                         category=row[CATEGORY],
-                        amount=float(row[AMOUNT]),
+                        amount=round(float(row[AMOUNT])),
                     )
                 )
     return expenses
@@ -109,6 +109,13 @@ def format_report(
         lines.append(
             f"{largest.merchant} ({largest.category}) on {largest.date} for {largest.amount:.2f}"
         )
+    return lines
+
+
+def format_csv(totals: list[tuple[str, float]]) -> list[str]:
+    lines = ["category,total"]
+    for name, amount in totals:
+        lines.append(f"{name},{amount:.2f}")
     return lines
 
 
