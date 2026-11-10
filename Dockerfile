@@ -6,5 +6,5 @@ COPY . .
 RUN uv sync --locked --no-dev
 
 ENV PATH="/app/.venv/bin:$PATH"
-#ENTRYPOINT ["expenses"]
-#CMD ["--help"]
+ENTRYPOINT ["expenses"]
+CMD ["--help"]
