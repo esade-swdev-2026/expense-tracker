@@ -29,7 +29,7 @@ def main() -> None:
 
 @app.command()
 def report(
-    path: str = typer.Argument("expenses.csv", help="CSV file to read."),
+    path: str = typer.Argument(str(DATA_FILE), help="CSV file to read."),
     category: str = typer.Option("", help="Only this category."),
     minimum: float = typer.Option(0.0, "--minimum", "--min", help="Ignore amounts below this."),
     month: str = typer.Option("", help="Only this month, as YYYY-MM."),
