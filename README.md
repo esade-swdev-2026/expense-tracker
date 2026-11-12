@@ -16,31 +16,33 @@ uv sync
 
 ## Use
 
-Report on the sample data, everything or one category:
-
-```bash
-uv run expenses report
-uv run expenses report --category dining --min 20
-uv run expenses report --month 2025-09
-uv run expenses report --top 5
-uv run expenses report --format csv
-```
-
-Add an expense:
+Add an expense, then report on what you have added:
 
 ```bash
 uv run expenses add "Bar Nuria" dining 12.40
 uv run expenses add Renfe transport 21.00 --date 2026-03-01
+uv run expenses report
+```
+
+Or report on the sample data, everything or one category:
+
+```bash
+uv run expenses report expenses.csv
+uv run expenses report expenses.csv --category dining --min 20
+uv run expenses report expenses.csv --month 2025-09
+uv run expenses report expenses.csv --top 5
+uv run expenses report expenses.csv --format csv
 ```
 
 `expenses --help` lists the commands; `expenses report --help` its options.
 
 ## The two CSV files
 
-- `expenses.csv` at the root is **sample data and is never modified**. It is what `report`
-  reads by default, and what the terminal sessions of the course work on.
-- `add` writes to `data/expenses.csv`, which is not in version control. Report on it by
-  passing the path: `uv run expenses report data/expenses.csv`.
+- `data/expenses.csv` is **your data**: `add` writes to it and `report` reads it by default.
+  It is not in version control.
+- `expenses.csv` at the root is **sample data and is never modified**. It is what the
+  terminal sessions of the course work on. Report on it by passing the path:
+  `uv run expenses report expenses.csv`.
 
 ## Before you push
 
