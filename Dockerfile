@@ -14,3 +14,4 @@ USER app
 WORKDIR /app
 ENV PATH="/app/.venv/bin:$PATH"
 ENTRYPOINT ["expenses"]
+CMD ["--help"]
