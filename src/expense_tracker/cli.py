@@ -1,10 +1,14 @@
 import csv
 import datetime
+import os
 from pathlib import Path
 
+import psycopg
 import typer
 
+from expense_tracker.database import add_expense_to_database, read_expenses_from_database
 from expense_tracker.report import (
+    Expense,
     filter_by_month,
     format_csv,
     format_report,
@@ -17,6 +21,8 @@ from expense_tracker.report import (
 )
 
 DATA_FILE = Path("data") / "expenses.csv"
+DATABASE_URL = "DATABASE_URL"
+DATABASE_LABEL = "the database"
 OUTPUT_FORMATS = ("table", "csv")
 
 app = typer.Typer(help="A terminal expense tracker.")
@@ -42,10 +48,12 @@ def report(
     if output_format not in OUTPUT_FORMATS:
         typer.echo(f"format must be table or csv, not {output_format}", err=True)
         raise typer.Exit(2)
+    url = os.environ.get(DATABASE_URL, "")
+    source = DATABASE_LABEL if url else path
     try:
-        expenses = read_expenses(path)
-    except (OSError, ValueError):
-        typer.echo(f"could not read {path}", err=True)
+        expenses = read_expenses_from_database(url) if url else read_expenses(path)
+    except (OSError, ValueError, psycopg.Error):
+        typer.echo(f"could not read {source}", err=True)
         raise typer.Exit(1) from None
 
     if month != "":
@@ -54,7 +62,7 @@ def report(
     if output_format == "csv":
         lines = format_csv(totals)
     else:
-        lines = format_report(path, category, minimum, totals, largest_expense(expenses), month)
+        lines = format_report(source, category, minimum, totals, largest_expense(expenses), month)
         if top > 0:
             lines = lines + [""] + format_top(largest_expenses(expenses, top))
     for line in lines:
@@ -70,11 +78,26 @@ def add(
 ) -> None:
     if date == "":
         date = datetime.date.today().isoformat()
+    expense = Expense(date=date, merchant=merchant, category=category, amount=amount)
+    url = os.environ.get(DATABASE_URL, "")
+    if url:
+        try:
+            add_expense_to_database(url, expense)
+        except psycopg.Error:
+            typer.echo(f"could not write to {DATABASE_LABEL}", err=True)
+            raise typer.Exit(1) from None
+        destination = DATABASE_LABEL
+    else:
+        append_expense_to_file(expense)
+        destination = str(DATA_FILE)
+    print(f"added {merchant} ({category}) {amount:.2f} to {destination}")
+
+
+def append_expense_to_file(expense: Expense) -> None:
     DATA_FILE.parent.mkdir(exist_ok=True)
     is_new = not DATA_FILE.exists()
     with DATA_FILE.open("a", newline="") as handle:
         writer = csv.writer(handle)
         if is_new:
             writer.writerow(["date", "merchant", "category", "amount"])
-        writer.writerow([date, merchant, category, f"{amount:.2f}"])
-    print(f"added {merchant} ({category}) {amount:.2f} to {DATA_FILE}")
+        writer.writerow([expense.date, expense.merchant, expense.category, f"{expense.amount:.2f}"])
