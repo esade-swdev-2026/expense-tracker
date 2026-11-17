@@ -41,3 +41,6 @@ jobs:
 
       - name: Run the image
         run: docker run --rm expenses --help
+
+      - name: Check the compose file
+        run: cp .env.example .env && docker compose config --quiet
