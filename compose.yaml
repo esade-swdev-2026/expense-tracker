@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres:18-alpine
+    env_file: .env
+    volumes:
+      - db-data:/var/lib/postgresql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - ./expenses.csv:/seed/expenses.csv:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 2s
+      timeout: 5s
+      retries: 15
+
+  tracker:
+    build: .
+    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db-data:
