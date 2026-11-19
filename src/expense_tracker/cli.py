@@ -78,6 +78,9 @@ def add(
 ) -> None:
     if date == "":
         date = datetime.date.today().isoformat()
+    if not is_valid_date(date):
+        typer.echo(f"date must look like 2026-11-17, not {date}", err=True)
+        raise typer.Exit(2)
     expense = Expense(date=date, merchant=merchant, category=category, amount=amount)
     url = os.environ.get(DATABASE_URL, "")
     if url:
@@ -91,6 +94,14 @@ def add(
         append_expense_to_file(expense)
         destination = str(DATA_FILE)
     print(f"added {merchant} ({category}) {amount:.2f} to {destination}")
+
+
+def is_valid_date(text: str) -> bool:
+    try:
+        datetime.date.fromisoformat(text)
+    except ValueError:
+        return False
+    return True
 
 
 def append_expense_to_file(expense: Expense) -> None:
