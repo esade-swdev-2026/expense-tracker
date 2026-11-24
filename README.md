@@ -30,6 +30,7 @@ Or report on the sample data, everything or one category:
 uv run expenses report expenses.csv
 uv run expenses report expenses.csv --category dining --min 20
 uv run expenses report expenses.csv --month 2025-09
+uv run expenses report expenses.csv --from 2025-09-01 --to 2025-09-15
 uv run expenses report expenses.csv --top 5
 uv run expenses report expenses.csv --format csv
 ```
