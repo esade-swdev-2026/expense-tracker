@@ -1,6 +1,7 @@
 import csv
 import datetime
 import os
+import re
 from pathlib import Path
 
 import psycopg
@@ -9,6 +10,7 @@ import typer
 from expense_tracker.database import add_expense_to_database, read_expenses_from_database
 from expense_tracker.report import (
     Expense,
+    filter_by_date_range,
     filter_by_month,
     format_csv,
     format_report,
@@ -24,6 +26,7 @@ DATA_FILE = Path("data") / "expenses.csv"
 DATABASE_URL = "DATABASE_URL"
 DATABASE_LABEL = "the database"
 OUTPUT_FORMATS = ("table", "csv")
+DASHED_DATE_PATTERN = re.compile(r"\d{4}-\d{2}-\d{2}")
 
 app = typer.Typer(help="A terminal expense tracker.")
 
@@ -41,9 +44,18 @@ def report(
     month: str = typer.Option("", help="Only this month, as YYYY-MM."),
     top: int = typer.Option(0, min=0, help="Also list the N largest expenses."),
     output_format: str = typer.Option("table", "--format", help="table or csv."),
+    date_from: str = typer.Option("", "--from", help="Only on or after this date, YYYY-MM-DD."),
+    date_to: str = typer.Option("", "--to", help="Only on or before this date, YYYY-MM-DD."),
 ) -> None:
     if month != "" and not is_valid_month(month):
         typer.echo(f"month must look like 2025-07, not {month}", err=True)
+        raise typer.Exit(2)
+    for name, bound in (("from", date_from), ("to", date_to)):
+        if bound != "" and not is_strict_date(bound):
+            typer.echo(f"{name} must look like 2026-11-17, not {bound}", err=True)
+            raise typer.Exit(2)
+    if date_from != "" and date_to != "" and date_from > date_to:
+        typer.echo("from must not be after to", err=True)
         raise typer.Exit(2)
     if output_format not in OUTPUT_FORMATS:
         typer.echo(f"format must be table or csv, not {output_format}", err=True)
@@ -58,11 +70,14 @@ def report(
 
     if month != "":
         expenses = filter_by_month(expenses, month)
+    expenses = filter_by_date_range(expenses, date_from, date_to)
     totals = total_by_category(expenses, category, minimum)
     if output_format == "csv":
         lines = format_csv(totals)
     else:
-        lines = format_report(source, category, minimum, totals, largest_expense(expenses), month)
+        lines = format_report(
+            source, category, minimum, totals, largest_expense(expenses), month, date_from, date_to
+        )
         if top > 0:
             lines = lines + [""] + format_top(largest_expenses(expenses, top))
     for line in lines:
@@ -94,6 +109,10 @@ def add(
         append_expense_to_file(expense)
         destination = str(DATA_FILE)
     print(f"added {merchant} ({category}) {amount:.2f} to {destination}")
+
+
+def is_strict_date(text: str) -> bool:
+    return DASHED_DATE_PATTERN.fullmatch(text) is not None and is_valid_date(text)
 
 
 def is_valid_date(text: str) -> bool:

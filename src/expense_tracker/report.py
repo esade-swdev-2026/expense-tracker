@@ -86,12 +86,18 @@ def format_report(
     totals: list[tuple[str, float]],
     largest: Expense | None,
     month: str = "",
+    date_from: str = "",
+    date_to: str = "",
 ) -> list[str]:
     lines = [f"Expense report for {path}"]
     if category != "":
         lines.append(f"category: {category}")
     if month != "":
         lines.append(f"month: {month}")
+    if date_from != "":
+        lines.append(f"from: {date_from}")
+    if date_to != "":
+        lines.append(f"to: {date_to}")
     if minimum > 0.0:
         lines.append(f"only amounts of {minimum:.2f} or more")
     lines.append("-" * RULE_WIDTH)
@@ -129,3 +135,12 @@ def is_valid_month(month: str) -> bool:
 
 def filter_by_month(expenses: list[Expense], month: str) -> list[Expense]:
     return [expense for expense in expenses if expense.date.startswith(month + "-")]
+
+
+def filter_by_date_range(expenses: list[Expense], date_from: str, date_to: str) -> list[Expense]:
+    return [
+        expense
+        for expense in expenses
+        if (date_from == "" or expense.date >= date_from)
+        and (date_to == "" or expense.date <= date_to)
+    ]
